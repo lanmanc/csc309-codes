@@ -1,0 +1,312 @@
+> Selected Element
+< <body></body>
+> console.log("hello world!")
+[Log] hello world!
+< undefined
+> var a = 1;
+< undefined
+> a 
+< 1
+> console.log(a)
+[Log] 1
+< undefined
+> typeof(a)
+< "number"
+> var b = "hello"
+< undefined
+> typeof(b)
+< "string"
+> typeof(1.223)
+< "number"
+> typeof(typeof(1.223))
+< "string"
+> 1 + 23
+< 24
+> "1" + 23
+< "123"
+> 1 + "23"
+< "123"
+> typeof(true)
+< "boolean"
+> typeof(false)
+< "boolean"
+> a 
+< 1
+> a = "s"
+< "s"
+> typeof(a)
+< "string"
+> var arr = [1, 2, 3, "k", true, false]
+< undefined
+> $4
+< "string"
+> var $ = 1
+< undefined
+> $ 
+< 1
+> var obj = {name: 'john', age: 23}
+< undefined
+> obj 
+< {name: "john", age: 23}
+> obj.name
+< "john"
+> obj.age
+< 23
+> arr[0]
+< 1
+> arr[1]
+< 2
+> arr[5]
+< false
+> arr 
+< [1, 2, 3, "k", true, false] (6)
+> arr[100]
+< undefined
+> typeof(obj)
+< "object"
+> typeof(arr)
+< "object"
+> arr
+< [1, 2, 3, "k", true, false] (6)
+> arr.length
+< 6
+> arr[6] = ''
+< ""
+> arr 
+< [1, 2, 3, "k", true, false, ""] (7)
+> arr[1000] = obj
+< {name: "john", age: 23}
+> arr
+< [1, 2, 3, "k", true, false, "", 1000: {name: "john", age: 23}] (1001)
+> arr.length
+< 1001
+> arr[8]
+< undefined
+> arr 
+< [1, 2, 3, "k", true, false, "", 1000: {name: "john", age: 23}] (1001)
+> arr[0]
+< 1
+> arr['key'] = 2
+< 2
+> arr 
+< [1, 2, 3, "k", true, false, "", 1000: {name: "john", age: 23}] (1001)
+> arr['random'] = 2
+< 2
+> arr 
+< [1, 2, 3, "k", true, false, "", 1000: {name: "john", age: 23}] (1001)
+> arr['random']
+< 2
+> arr.random
+< 2
+> typeof(arr)
+< "object"
+> arr.random
+< 2
+> arr.0
+< SyntaxError: Unexpected number '.0'
+> obj
+< {name: "john", age: 23}
+> obj.name 
+< "john"
+> obj['name']
+< "john"
+> arr.indexOf(2)
+< 1
+> arr.indexOf('random')
+< -1
+> arr.random = 999;
+< 999
+> arr.indexOf(999)
+< -1
+> arr[2000] = 9999;
+< 9999
+> arr
+< [1, 2, 3, "k", true, false, "", 1000: {name: "john", age: 23}, 2000: 9999] (2001)
+> arr.indexOf(9999)
+< 2000
+> arr.indexOf(true)
+< 4
+> arr[4]
+< true
+> arr[2000]
+< 9999
+> arr['random']
+< 999
+> arr 
+< [1, 2, 3, "k", true, false, "", 1000: {name: "john", age: 23}, 2000: 9999] (2001)
+> obj 
+< {name: "john", age: 23}
+> obj[1] = 2
+< 2
+> obj
+< {1: 2, name: "john", age: 23}
+> obj.print = function(){
+    console.log(this.name, this.age);
+}
+< function (){
+    console.log(this.name, this.age);
+}
+> obj.print()
+[Log] john – 23
+< undefined
+> var f = function(){
+    console.log(this.name, this.age);
+}
+< undefined
+> typeof(f)
+< "function"
+> obj.print2 = f;
+< function (){
+    console.log(this.name, this.age);
+}
+> obj.print2()
+[Log] john – 23
+< undefined
+> var x = null;
+< undefined
+> var y = undefined;
+< undefined
+> typeof(x)
+< "object"
+> typeof(null)
+< "object"
+> typeof(undefined)
+< "undefined"
+> function f(int x){
+    console.log(x)
+}
+< SyntaxError: Unexpected identifier 'x'. Expected a ')' or a ',' after a parameter declaration.
+> function f(x){
+    console.log(x)
+}
+< undefined
+> f(12)
+[Log] 12
+< undefined
+> f('a')
+[Log] a
+< undefined
+> f()
+[Log] undefined
+< undefined
+> var g = f(12)
+[Log] 12
+< undefined
+> g
+< undefined
+> f(12, 12, 12, 12, 12)
+[Log] 12
+< undefined
+> class Test{
+    constructor(name){
+        this.name = name
+    }
+}
+< undefined
+> typeof(Test)
+< "function"
+> var x = new Test(1)
+< undefined
+> typeof(x)
+< "object"
+> console.log(1)
+[Log] 1
+< undefined
+> var a = 1
+< undefined
+> a == 1
+< true
+> a === 1
+< true
+> 1 == "1"
+< true
+> [] == 0
+< true
+> [] === 0
+< false
+> 1 === "1"
+< false
+> 1 === 1
+< true
+> 1 !== 1
+< false
+> for (var item in arr){
+    console.log(item)
+}
+[Log] 0
+[Log] 1
+[Log] 2
+[Log] 3
+[Log] 4
+[Log] 5
+[Log] 6
+[Log] 1000
+[Log] 2000
+[Log] key
+[Log] random
+< undefined
+> for (var item of arr){
+    console.log(item)
+}
+[Log] 1
+[Log] 2
+[Log] 3
+[Log] k
+[Log] true
+[Log] false
+[Log] 
+[Log] undefined (x993)
+[Log] {1: 2, name: "john", age: 23, print: function, print2: function}
+[Log] undefined (x999)
+[Log] 9999
+< undefined
+> arr 
+< [1, 2, 3, "k", true, false, "", 1000: Object, 2000: 9999] (2001)
+> arr.forEach(function(item){
+    console.log(item)
+})
+[Log] 1
+[Log] 2
+[Log] 3
+[Log] k
+[Log] true
+[Log] false
+[Log] 
+[Log] {1: 2, name: "john", age: 23, print: function, print2: function}
+[Log] 9999
+< undefined
+> arr.forEach(function(item, index){
+    console.log(index, item)
+})
+[Log] 0 – 1
+[Log] 1 – 2
+[Log] 2 – 3
+[Log] 3 – "k"
+[Log] 4 – true
+[Log] 5 – false
+[Log] 6 – ""
+[Log] 1000 – {1: 2, name: "john", age: 23, …}
+{1: 2, name: "john", age: 23, print: function, print2: function}Object1: 2age: 23name: "john"print: function()print2: function()Object Prototype
+[Log] 2000 – 9999
+< undefined
+> arr = [1, 2, 3]
+< [1, 2, 3] (3)
+> arr[10] = 4
+< 4
+> arr
+< [1, 2, 3, 10: 4] (11)
+> arr += [1, 2, 3, 4]
+< "1,2,3,,,,,,,,41,2,3,4"
+> arr 
+< "1,2,3,,,,,,,,41,2,3,4"
+
+
+
+
+
+
+
+
+
+
+
