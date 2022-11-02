@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>List of all stores</h1>
+    <ul>
+        {% for store in stores %}
+            <li>{{ store.name }} <br>
+                <ul>
+                {% for product in store.products.all %}
+                    <li>{{ product.name }} --- ${{ product.price }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
