@@ -10,10 +10,12 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-        const Text = ({ children }) => (
-            <h1 style={{color: 'red'}}>{children}<br/></h1>
-        );
-
+        class Text extends React.Component {
+            render(){
+                return <h1 style={{color: 'red'}}>{this.props.children}<br/></h1>
+            }
+        }
+        
         const HelloWorld = ({ title, array }) => {
             return <>
                 <Text>Hello! My name is {title}!!!</Text>
@@ -21,9 +23,98 @@
             </>;
         }
 
+
+        /*
+            IDEA of setState
+
+            def setState (newState):
+                if not equal(this.state, newState):
+                    this.state = newState
+                    reRender()
+
+        */
+        class Counter extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {
+                    count: 0,
+                }
+                // this.increment = this.increment.bind(this)
+                // setInterval(() => {
+                //     this.setState({
+                //         count: this.state.count + 1
+                //     })
+                // }, 1000)
+            }
+
+            increment = () => {
+                this.setState({
+                    count: this.state.count + 1,
+                })
+            }
+
+            render(){
+                return (
+                    <>
+                        <button onClick={this.increment}>Click me!</button>
+                        <Text>{ this.state.count }</Text>
+                    </>
+                )
+            }
+        }
+
+        class Input extends React.Component {
+            render(){
+                const { title, value, update } = this.props;
+                return (
+                    <>
+                        <Text>{ title }</Text>
+                        <input 
+                            type="text" 
+                            value={value}
+                            onChange={event => update(event.target.value)}
+                            style={{height: 40, width: 200, fontSize: '2rem'}}
+                        />
+                    </>
+                )
+            }
+        }
+
+        class Converter extends React.Component {
+            constructor(props){
+                super(props)
+                this.state = {
+                    celsius: 0,
+                }
+            }
+
+            update = isCelsius => value => {
+                this.setState({
+                    celsius: isCelsius ? value : (value - 32) * 5 / 9,
+                })
+            }
+
+            render(){
+                return (
+                    <>
+                        <Input 
+                            title="Celsius"
+                            value={this.state.celsius}
+                            update={this.update(true)}
+                        />
+                        <Input 
+                            title="Fahrenheit"
+                            value={this.state.celsius * 9 / 5 + 32}
+                            update={this.update(false)}
+                        />
+                    </>
+                )
+            }
+        }
+
         const element = <HelloWorld title="CSC309" array={[1, 2, 3]}/>;
 
-        ReactDOM.render(element, document.getElementById("root"))
+        ReactDOM.render(<Converter />, document.getElementById("root"))
     </script>
             
 </body>
